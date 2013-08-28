@@ -30,14 +30,14 @@
   \item{rnd}{Number of digits for rounding. Affects display
   only, not estimates.}
 
-  \item{start}{Optional starting value.}
+  \item{start}{describe here.}
 }
 \value{
-  A \code{\link{rrsi-class}} object with the following
-  elements.  \item{estimate}{vector with point and interval
-  estimate} \item{estimator}{either \emph{PF} or
-  \emph{IDR}} \item{y}{data vector} \item{k}{Likelihood
-  ratio criterion} \item{rnd}{how many digits to round the
+  A \code{\link{rrsi}} object with the following elements.
+  \item{estimate}{vector with point and interval estimate}
+  \item{estimator}{either \emph{PF} or \emph{IDR}}
+  \item{y}{data vector} \item{k}{Likelihood ratio
+  criterion} \item{rnd}{how many digits to round the
   display} \item{alpha}{complement of confidence level}
 }
 \description{

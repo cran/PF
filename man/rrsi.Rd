@@ -1,6 +1,5 @@
 \name{rrsi}
 \alias{rrsi}
-\alias{rrsi-class}
 \title{Data class rrsi}
 \description{
   Data class rrsi

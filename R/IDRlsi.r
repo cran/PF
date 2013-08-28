@@ -22,8 +22,8 @@
 #' @param iter.max Maximum number of iterations
 #' @param converge Convergence criterion
 #' @param rnd Number of digits for rounding. Affects display only, not estimates.
-#' @param start Optional starting value.
-#' @return A \code{\link{rrsi-class}} object with the following elements.
+#' @param start describe here.
+#' @return A \code{\link{rrsi}} object with the following elements.
 #'  \item{estimate}{vector with point and interval estimate}
 #'  \item{estimator}{either \emph{PF} or \emph{IDR}}
 #'  \item{y}{data vector}

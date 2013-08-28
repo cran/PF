@@ -1,7 +1,6 @@
 #' @title Data class pf
-#' @name pf
+# @name pf-class
 #' @aliases pf
-# @aliases pf-class
 #' @rdname pf
 #' @section Fields:
 #' \itemize{
@@ -9,22 +8,17 @@
 #' \item[\code{rnd}]{  how many digits to round display}
 #' \item[\code{alpha}]{  complement of c.i.}
 #' }
-#' @seealso \code{\link{rr1-class}, \link{rrsi-class}, \link{rrsc-class}, \link{rrstr-class}}
+#' @seealso \code{\link{rr1}, \link{rrsi}, \link{rrsc}, \link{rrstr}}
 #' @export
 #' @author Marie Vendettuoli \email{marie.c.vendettuoli@@aphis.usda.gov}
-pf <- setRefClass(  'pf', 
-					fields = list(estimator = 'character', rnd = 'numeric',
-	alpha = 'numeric'),
-					methods = list(initialize = function(...){
-						rnd <<- 3
-						estimator <<- character(0)
-						alpha <<- numeric(0)
-						callSuper(...)}))
+pf <- setRefClass('pf', fields = list(estimator = 'character', rnd = 'numeric',
+	alpha = 'numeric'))
 
 	
 #' @title Data class rr1
+# @name rr1-class
+#' @aliases rr1
 #' @name rr1
-#' @aliases rr1-class
 #' @rdname rr1
 #' @section Fields:
 #' \itemize{
@@ -38,14 +32,11 @@ pf <- setRefClass(  'pf',
 #' @export
 #' @author Marie Vendettuoli \email{marie.c.vendettuoli@@aphis.usda.gov}
 rr1 <- setRefClass('rr1', contains = 'pf', fields = list(estimate = 'numeric',
-	y = 'matrix'), methods = list(initialize = function(...){
-		estimate <<- numeric(0)
-		y <<- matrix(0)
-		callSuper(...)}))
+	y = 'matrix'))
 
 #' @title Data class rror
-#' @name rror
-#' @aliases rror-class
+# @name rror-class
+#' @aliases rror
 #' @rdname rrorclass
 #' @section Fields:
 #' \itemize{
@@ -62,15 +53,11 @@ rr1 <- setRefClass('rr1', contains = 'pf', fields = list(estimate = 'numeric',
 #' @export
 #' @author Marie Vendettuoli \email{marie.c.vendettuoli@@aphis.usda.gov}
 rror <- setRefClass('rror', contains = 'rr1', fields = list(norm = 'logical',
-	degf = 'numeric', mu = 'matrix'), methods = list(initialize = function(...){
-		norm <<- FALSE
-		degf <<- 2
-		mu <<- matrix(0, nrow = 2, ncol = 3, dimnames = list(c('txcon', 'txvac'), c('mu.hat', 'LL', 'UL')))
-		callSuper(...)}))
+	degf = 'numeric', mu = 'matrix'))
 
 #' @title Data class rrsi
-#' @name rrsi
-#' @aliases rrsi-class
+# @name rrsi-class
+#' @aliases rrsi
 #' @rdname rrsi
 #' @section Fields:
 #' \itemize{
@@ -85,15 +72,11 @@ rror <- setRefClass('rror', contains = 'rr1', fields = list(norm = 'logical',
 #' @export
 #' @author Marie Vendettuoli \email{marie.c.vendettuoli@@aphis.usda.gov}
 rrsi <- setRefClass('rrsi', contains = 'pf', fields = list(y = 'numeric', k = 
-	'numeric', estimate = 'numeric'), methods = list(initialize = function(...){
-	y <<- numeric(0)
-	k <<- numeric(0)
-	estimate <<- numeric(0)
-	callSuper(...)}))
+	'numeric', estimate = 'numeric'))
 
 #' @title Data class rrmp
-#' @name rrmp
-#' @aliases rrmp-class
+# @name rrmp-class
+#' @aliases rrmp
 #' @rdname rrmp
 #' @section Fields:
 #' \itemize{
@@ -111,17 +94,10 @@ rrsi <- setRefClass('rrsi', contains = 'pf', fields = list(y = 'numeric', k =
 #' @export
 #' @author Marie Vendettuoli \email{marie.c.vendettuoli@@aphis.usda.gov}
 rrmp <- setRefClass('rrmp', contains = 'rr1', fields = list(compare = 'character',
-	xtable = 'matrix', freqvec = 'numeric', multvec = 'data.frame'), methods = list(
-	initialize = function(...){
-		compare <<- character(0)
-		xtable <<- matrix(0, nrow = 2, ncol = 2)
-		freqvec <<- numeric(0)
-		multvec <<- data.frame(0)
-		callSuper(...)}))
+	xtable = 'matrix', freqvec = 'numeric', multvec = 'data.frame'))
 
 #' @title Data class rrsc
-#' @name rrsc
-#' @aliases rrsc-class
+#' @alias rrsc
 #' @rdname rrscclass
 #' @section Fields:
 #' \itemize{
@@ -135,15 +111,11 @@ rrmp <- setRefClass('rrmp', contains = 'rr1', fields = list(compare = 'character
 #' @export
 #' @author Marie Vendettuoli \email{marie.c.vendettuoli@@aphis.usda.gov}
 rrsc <- setRefClass('rrsc', contains = 'pf', fields = list(estimate = 'matrix',
-	y = 'numeric'), methods = list(initialize = function(...){
-		estimate <<- matrix(0, nrow = 5, ncol = 3, dimnames = list(c('log method', 
-			'0.5 method', 'MN method', 'score method', 'skew corr'), c('PF', 'LL', 'UL')))
-		y <<- numeric(0)
-		callSuper(...)}))
+	y = 'numeric'))
 	
 #' @title Data class rrstr
-#' @name rrstr
-#' @aliases rrstr-class
+# @name rrstr-class
+#' @aliases rrstr
 #' @rdname rrstrclass
 #' @section Fields:
 #' \itemize{
@@ -159,11 +131,5 @@ rrsc <- setRefClass('rrsc', contains = 'pf', fields = list(estimate = 'matrix',
 #' @export
 #' @author Marie Vendettuoli \email{marie.c.vendettuoli@@aphis.usda.gov}
 rrstr <- setRefClass('rrstr', contains = 'pf', fields = list(estimate = 'matrix',
-	hom = 'list', y = 'matrix', compare = 'character'), methods = list(initialize = function(...){
-		estimate <<- matrix(0, nrow = 3, ncol = 3, dimnames = list(c('starting', 'mle', 'skew corr'), c('RR', 'LL', 'UL')))
-		
-		hom <<- list(0)
-		y <<- matrix(0)
-		compare <<- character(0)
-		callSuper(...)}))
+	hom = 'list', y = 'matrix', compare = 'character'))
 	

@@ -20,7 +20,7 @@ getPFTable <- function(x, type = 'summary', out = 'dev', file = '',...){
 #' @docType methods
 setMethod('getPFTable', 'rr1',
 	function(x, type = 'summary', out = 'dev', file = '',...){ 
-		.getTable.rr1(x = object, type = type, out = out, file = file,...)
+		.getTable.rr1(x = x, type = type, out = out, file = file,...)
 	})
 
 

@@ -15,7 +15,7 @@
 #' @param stepstart starting interval for step search
 #' @param nuisance.points number of points over which to evaluate nuisance parameter
 #' @param gamma parameter for Berger-Boos correction (restricts range of nuisance parameter evaluation)
-#' @return An object of class \code{\link{rr1-class}} with the following fields: \cr
+#' @return An object of class \code{\link{rr1}} with the following fields: \cr
 #'  \item{estimate}{vector with point and interval estimate}
 #'  \item{estimator}{either \code{"PF"} or \code{"RR"}}
 #'  \item{y}{data vector}
@@ -27,22 +27,22 @@
 #' \cr Berger RL, Boos DD, 1994. P values maximized over a confidence set for the nuisance parameter. \emph{Journal of the American Statistical Association} 89:214-220.
 #' @author David Siev \email{david.siev@@aphis.usda.gov}
 #' @note Level tested: Moderate.
-#' @seealso \code{\link{RRtosst}, \link{rr1-class}}.
+#' @seealso \code{\link{RRtosst}, \link{rr1}}.
 #' 
 #' @examples
-#'  RRotsst(c(4, 24, 12, 28), rnd = 3)
+#'  \dontrun{RRotsst(c(4, 24, 12, 28), rnd = 3)
 #' 
 #' # PF 
 #' # 95% interval estimates
 #' 
 #'  #    PF     LL     UL 
-#' # 0.6111 0.0148 0.8519 
+#' # 0.6111 0.0148 0.8519 }
 
 ##-----------------------------------------------
 ## RRotsst
 ##-----------------------------------------------
 
-RRotsst <- function(y, alpha = 0.05, pf = TRUE, stepstart=.1, iter.max = 36, converge = 1e-6, rnd = 3, trace.it = FALSE, nuisance.points=120, gamma=1e-6){
+RRotsst <- function(y, alpha = 0.05, pf = TRUE, stepstart=.1, iter.max = 36, converge = 1e-6, rnd=3, trace.it = FALSE,nuisance.points=120,gamma=1e-6){
 
 # Estimates exact confidence interval by the OTSST method
 # Score statistic used to select tail area tables
@@ -90,21 +90,23 @@ RRotsst <- function(y, alpha = 0.05, pf = TRUE, stepstart=.1, iter.max = 36, con
 	Y$C <- choose(n1,Y$y1)*choose(n2,Y$y2)
 
 	# score statistic - with pi.tilde by quadratic formula
-	scst <- function(rho,y1,n1,y2,n2){
-		pih1 <- y1/n1 # unrestricted MLE of current data
-		pih2 <- y2/n2
-		if(y1==0 & y2==0) sc <- 0
-			else if(y2==n2) sc <- 0
-			else{
-				A <- rho*(n1+n2)
-				B <- -(rho*(y1+n2) + y2 + n1)
-				C <- y1+y2
-				pit1 <- (-B-sqrt(B^2-4*A*C))/(2*A)
-				pit2 <- rho*pit1
-				sc <- (pih2-rho*pih1)/sqrt(rho^2*pit1*(1-pit1)/n1 + pit2*(1-pit2)/n2)
-				}
-		return(sc)
+	scst <- function(rho, y1, n1, y2, n2) {
+		pih1 <- y1 / n1  # unrestricted MLE of current data
+		pih2 <- y2 / n2
+		if (y1 == 0 & y2 == 0) 
+			sc <- 0 else if (y2 == n2) 
+			sc <- 0 else {
+			A <- rho * (n1 + n2)
+			B <- -(rho * (y1 + n2) + y2 + n1)
+			C <- y1 + y2
+			pit1 <- (-B - sqrt(B^2 - 4 * A * C))/(2 * A)
+			pit2 <- rho * pit1
+			sc <- (pih2 - rho * pih1) / sqrt(rho^2 * pit1 * (1 - pit1) / n1 + pit2 * (1 - 
+				pit2) / n2)
 		}
+		return(sc)
+	} 
+
 
 	# get Clopper-Pearson intervals for Berger-Boos method
 	cp <- binci(c(x1,x2),c(n1,n2),alpha=gamma)[,c('cp low','cp high')]
@@ -136,8 +138,8 @@ RRotsst <- function(y, alpha = 0.05, pf = TRUE, stepstart=.1, iter.max = 36, con
 		q.set <- Y[abs(scst.y)>=abs(scst.y[observed]),]
 		q.set$n1y1 <- n1-q.set$y1
 		q.set$n2y2 <- n2-q.set$y2
-		if(gamma > 0) pn <- seq(max(L1,L2/low),min(U1,U2/low),length=nuisance.points) # Berger-Boos method
-			else pn <- seq(0,min(1/low,1),length=nuisance.points) # simple method 
+		if(gamma > 0) pn <- seq(max(L1,L2/low),min(U1,U2/low),length=nuisance.points) # Berger-Boos method 17.164
+			else pn <- seq(0,min(1/low,1),length=nuisance.points) # simple method 17.138
 		if(sum(pn>1)>0){
 				cat('\nIteration', iter, 'nuisance parameter outside parameter space\n')
 				next
@@ -180,8 +182,8 @@ RRotsst <- function(y, alpha = 0.05, pf = TRUE, stepstart=.1, iter.max = 36, con
 		p.set <- Y[abs(scst.y)>=abs(scst.y[observed]),]
 		p.set$n1y1 <- n1-p.set$y1
 		p.set$n2y2 <- n2-p.set$y2
-		if(gamma > 0) pn <- seq(max(L1,L2/high),min(U1,U2/high),length=nuisance.points) # 
-			else pn <- seq(0,min(1/high,1),length=nuisance.points) # 
+		if(gamma > 0) pn <- seq(max(L1,L2/high),min(U1,U2/high),length=nuisance.points) # Berger-Boos method 17.164
+			else pn <- seq(0,min(1/high,1),length=nuisance.points) # simple method 17.138
 			if(sum(pn>1)>0){
 				cat('\nIteration', iter, 'nuisance parameter outside parameter space\n')
 				next

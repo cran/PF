@@ -14,7 +14,6 @@
   \email{marie.c.vendettuoli@aphis.usda.gov}
 }
 \seealso{
-  \code{\link{rr1-class}, \link{rrsi-class},
-  \link{rrsc-class}, \link{rrstr-class}}
+  \code{\link{rr1}, \link{rrsi}, \link{rrsc}, \link{rrstr}}
 }
 

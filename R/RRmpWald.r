@@ -23,7 +23,7 @@
 #' @param df Degrees of freedom. When NULL, the function will default to 
 #' \code{df = N - 2}, where N is the total number of pairs. 
 #' @param rnd Number of digits for rounding. Affects display only, not estimates.
-#' @return A \code{\link{rrmp-class}} object with the following fields:
+#' @return A \code{\link{rrmp}} object with the following fields:
 #'  \item{estimate}{vector of point and interval estimates - see details}
 #'  \item{estimator}{either \code{"PF"} or \code{"RR"}}
 #'  \item{compare}{text vector, same as input}
@@ -141,7 +141,7 @@ RRmpWald <- function(formula = NULL, data = NULL, compare = c('con', 'vac'),
 	}
 }
 .twoby <- function(formula, data, compare, affected){
-    assign('cluster', function(x) {return(x)}, envir = .GlobalEnv)
+	cluster <- function(x) {return(x)}
     this.call <- match.call()
 		drop.levels <- function (x){
 		for (j in 1:ncol(x)) if (is.factor(x[, j])) 
@@ -150,6 +150,7 @@ RRmpWald <- function(formula = NULL, data = NULL, compare = c('con', 'vac'),
 		}
 	data <- drop.levels(data)
     Terms <- terms(formula,specials = 'cluster', data = data)
+	environment(Terms) <- environment()
     A <- model.frame(formula = Terms, data = data)
     dat <- A[, 1]
     group <- A[, 2]

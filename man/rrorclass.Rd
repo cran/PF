@@ -1,6 +1,5 @@
 \name{rror}
 \alias{rror}
-\alias{rror-class}
 \title{Data class rror}
 \description{
   Data class rror

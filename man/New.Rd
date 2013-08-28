@@ -4,16 +4,15 @@
 \title{New dataset}
 \format{a data frame with 52 observations of the following 3 variables, no NAs
 \describe{
-\item{cage}{Cage ID. 1 - 26}
-\item{tx}{Treatment. One of 'con' or 'vac'}
-\item{pos}{Response indicator. 0 = negative or 1 = positive}
+\item{cage}{cage ID. 1 - 26}
+\item{tx}{treatment. one of 'con' or 'vac'}
+\item{pos}{numeric indicator of positive response. 0 = FALSE or 1 = TRUE}
 }}
 \description{
-  This data set is the outcome of a vaccination-challenge
-  study. Each cage housed two dogs, one randomized to
-  vaccine, the other received placebo. All subjects were
-  later challenged with the virulent pathogen. Those
-  affected by the disease were recorded as positive.
+  New dataset
+}
+\references{
+  We need some references
 }
 \keyword{datasets}
 

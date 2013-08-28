@@ -1,4 +1,4 @@
-
+#' @export
 .summarytable.rror.tex <- function(x, file = '', append = F,...){
 	cat('%\\usepackage{float, hyperref}\n', file = file, append = append)
 	if(x@norm){
@@ -14,14 +14,14 @@
 	
 }
 
-
+#' @export
 .summarytable.rror.texdoc <- function(x, file = '',...){
 	cat('\\documentclass[12pt]{article}\n \\usepackage{float, hyperref}\n \\begin{document}\n', file = file)
 	.summarytable.rror.tex(x = x, file = file, append = T)
 	cat('\\end{document}\n', file = file, append = T)
 }
 
-
+#' @export
 .summarytable.rror.html <- function(x, file = '',...){
 	if(x@norm){
 		conf <- paste(100 * (1 - x@alpha), "% gaussian intervals", sep = "")
@@ -39,32 +39,7 @@
 	cat(paste('</body>\n</html>\n', sep =''), file = file, append = T)
 }
 
-
-
-.summarytable.rror.doc <- function(x, file = '', autoformat = 1,...){
-	if(!'R2wd' %in% installed.packages()){	
-		stop('package R2wd required for doc output')
-	} else {
-	wdGet()
-		if(x@norm){
-			conf <- paste(100 * (1 - x@alpha), "% gaussian intervals", sep = "")
-		} else {
-			conf <- paste(100 * (1 - x@alpha), "% t intervals on ", x@degf, " df", sep = "")
-		}
-		wdSection(conf)
-		temp <- format(round(as.data.frame(x@estimate), digits = x@rnd), nsmall = x@rnd)
-		colnames(temp) <- 'estimate'
-		wdTable(temp, autoformat = autoformat)
-			
-		wdTable(round(x@mu, x@rnd), autoformat = autoformat)
-			
-		if(file !=''){
-			wdSave(file)
-		}
-		wdQuit()
-	}
-}
-
+#' @export
 .summarytable.rror <- function(x, out = 'dev', file = '',...){
 	args <- list(...)
 	if(is.null(args$autoformat)){
@@ -77,10 +52,10 @@
 			tex = .summarytable.rror.tex(x = x, file = file),
 			texdoc = .summarytable.rror.texdoc(x = x, file = file),
 			html = .summarytable.rror.html(x = x, file = file),
-			doc = .summarytable.rror.doc(x = x, file = file, autoformat = autoformat))
+			)
 }
 
-
+#' @export
 .getTable.rror <- function(x, type = 'summary', out = 'dev', file = '',...){
 	.summarytable.rror(x = x, type = type, out = out, file = file,...)
 }

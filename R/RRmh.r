@@ -12,7 +12,7 @@
 #' @param pf Estimate \emph{RR} or its complement \emph{PF}? 
 #' @param alpha Complement of the confidence level.
 #' @param rnd Number of digits for rounding. Affects display only, not estimates.
-#' @return An object of class \code{\link{rr1-class}}  with the following fields.
+#' @return An object of class \code{\link{rr1}}  with the following fields.
 #'  \item{estimate}{vector of point and interval estimates:  point estimate, lower confidence limit, upper confidence limit}
 #'  \item{estimator}{either \code{"PF"} or \code{"RR"}}
 #'  \item{y}{y matrix of the data}
@@ -33,7 +33,7 @@
 #' \cr \cr Agresti A, Hartzel J, 2000.  Strategies for comparing treatments on a binary response with multi-centre data.  \emph{Statistics in Medicine}  19:  1115-1139.
 #' \cr Lachin JM, 2000.  \emph{Biostatistical Methods:  The Assessment of Relative Risks} (Wiley, New York), Sec. 4.3.1.
 #' @author Christopher Tong \email{Christopher.H.Tong@@aphis.usda.gov}
-#' @seealso \code{\link{rr1-class}}
+#' @seealso \code{\link{rr1}}
 #' @examples
 #' 
 #' ## Table 1 from Gart (1985)

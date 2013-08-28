@@ -3,7 +3,7 @@
 \title{RR estimate from logistic regression.}
 \usage{
   RRor(fit = NULL, beta.hat = NULL, var.beta.hat = NULL,
-    degf = NULL, which = c(1, 2), pf = TRUE, norm = FALSE,
+    degf = NULL, which = c(1, 2), pf = T, norm = F,
     alpha = 0.05, rnd = 3)
 }
 \arguments{
@@ -32,9 +32,9 @@
   only, not estimates.}
 }
 \value{
-  A \code{\link{rror-class}} object with the following
-  fields.  \item{estimate}{vector with point and interval
-  estimate} \item{estimator}{either \emph{PF} or \emph{RR}}
+  A \code{\link{rror}} object with the following fields.
+  \item{estimate}{vector with point and interval estimate}
+  \item{estimator}{either \emph{PF} or \emph{RR}}
   \item{mu}{matrix with rows giving probability estimates
   for each of the groups} \item{rnd}{how many digits to
   round the display} \item{alpha}{complement of confidence
@@ -83,8 +83,11 @@ RRor(tauWt(bird.fit))
 \author{
   David Siev \email{david.siev@aphis.usda.gov}
 }
+\references{
+  No references yet.
+}
 \seealso{
-  \code{\link{rror-class}, \link{phiWt}, \link{tauWt}}. See
-  the package vignette for more examples.
+  \code{\link{rror}, \link{phiWt}, \link{tauWt}}. See the
+  package vignette for more examples.
 }
 

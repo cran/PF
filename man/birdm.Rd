@@ -2,19 +2,18 @@
 \name{birdm}
 \alias{birdm}
 \title{birdm dataset}
-\format{a data.frame with 6 observations, no NAs
+\format{a data.frame with 6 observations of the following 4 variables, no NAs
 \describe{
 \item{y}{number positive}
-\item{n}{number positive + number negative}
+\item{n}{total number in group \code{tx} x \code{all}}
 \item{tx}{treatment 'vac' or 'con'}
+\item{all}{all?}
 }}
 \description{
-  This is an artificial modification of the
-  \code{\link{bird}} data set for an example described in
-  the PF Vignette, Section 4.2.2.
+  birdm dataset
 }
-\seealso{
-  \code{\link{bird}}
+\references{
+  we need some references
 }
 \keyword{datasets}
 

@@ -27,22 +27,6 @@
 
 
 
-.summarytable.rr1.doc <- function(x, file = '', autoformat = 1,...){
-	if(!'R2wd' %in% installed.packages()){	
-		stop('package R2wd required for doc output')
-	} else {
-		conf <- paste(x@estimator, " ", round(100*(1-x@alpha),x@rnd),'% interval estimates',sep='')
-		df1 <- round(as.data.frame(x@estimate), x@rnd)
-		names(df1) <- 'estimate'
-		wdGet()
-		wdTable(df1, caption = conf, autoformat = autoformat)
-		if(file !=''){
-			wdSave(file)
-		}
-		wdQuit()
-	}
-}
-
 
 .summarytable.rr1 <- function(x, out = 'dev', file = '',...){
 	args <- list(...)
@@ -56,7 +40,7 @@
 			tex = .summarytable.rr1.tex(x = x, file = file),
 			texdoc = .summarytable.rr1.texdoc(x = x, file = file),
 			html = .summarytable.rr1.html(x = x, file = file),
-			doc = .summarytable.rr1.doc(x = x, file = file, autoformat = autoformat))
+			)
 }
 
 

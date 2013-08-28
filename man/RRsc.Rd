@@ -25,12 +25,12 @@
   only, not estimates.}
 }
 \value{
-  A \code{\link{rrsc-class}} object with the following
-  fields.  \item{estimate}{matrix of point and interval
-  estimates - see details} \item{estimator}{either
-  \code{"PF"} or \code{"RR"}} \item{y}{data vector}
-  \item{rnd}{how many digits to round the display}
-  \item{alpha}{complement of confidence level}
+  A \code{\link{rrsc}} object with the following fields.
+  \item{estimate}{matrix of point and interval estimates -
+  see details} \item{estimator}{either \code{"PF"} or
+  \code{"RR"}} \item{y}{data vector} \item{rnd}{how many
+  digits to round the display} \item{alpha}{complement of
+  confidence level}
 }
 \description{
   Estimates confidence intervals for the risk ratio or
@@ -82,6 +82,6 @@ RRsc(c(4, 24, 12, 28))
   Squares. \emph{Technometrics} 20:7-14.
 }
 \seealso{
-  \code{\link{rrsc-class}}
+  \code{\link{rrsc}}
 }
 

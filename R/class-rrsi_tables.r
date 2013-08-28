@@ -1,4 +1,4 @@
-
+#' @export
 .summarytable.rrsi.tex <- function(x, file = '', append = F,...){
 	conf <- paste(round(100*(1-x@alpha),x@rnd),'\\% ',sep='')
 	support <- paste('1/',round(x@k,x@rnd),' likelihood support interval for ',x@estimator,
@@ -11,14 +11,14 @@
 	cat(foot, file = file, append = T)
 }
 
-
+#' @export
 .summarytable.rrsi.texdoc <- function(x, file = '',...){
 	cat('\\documentclass[12pt]{article}\n \\usepackage{float, hyperref}\n \\begin{document}\n', file = file)
 	.summarytable.rrsi.tex(x = x, file = file, append = T)
 	cat('\\end{document}\n', file = file, append = T)
 }
 
-
+#' @export
 .summarytable.rrsi.html <- function(x, file = '',...){
 	support <- paste('1/',round(x@k,x@rnd),' likelihood support interval for ',x@estimator,
 		'. <sup>1</sup>', sep = '')
@@ -31,27 +31,7 @@
 	cat(paste('<hr>1. Corresponds to ',conf,'confidence\n  (under certain assumptions)\n</body>\n</html>\n', sep =''), file = file, append = T)
 }
 
-.summarytable.rrsi.doc <- function(x, file = '', autoformat = 1,...){
-	if(!'R2wd' %in% installed.packages()){	
-		stop('package R2wd required for doc output')
-	} else {
-		support <- paste('1/',round(x@k,x@rnd),' likelihood support interval for ',x@estimator,
-			'.', sep = '')
-		conf <- paste(round(100*(1-x@alpha),x@rnd),'% ',sep='')
-		df1 <- round(as.data.frame(x@estimate), x@rnd)
-		names(df1) <- 'estimate'
-		wdGet()
-		wdSection(support)
-		wdTable(df1, caption = paste('Corresponds to ',conf,'confidence\n  (under certain assumptions)', sep = ''), 
-			autoformat = autoformat)
-		if(file !=''){
-			wdSave(file)
-		}
-		wdQuit()
-	}
-}
-
-
+#' @export
 .summarytable.rrsi <- function(x, out = 'dev', file = '',...){
 	args <- list(...)
 	if(is.null(args$autoformat)){
@@ -64,10 +44,10 @@
 			tex = .summarytable.rrsi.tex(x = x, file = file),
 			texdoc = .summarytable.rrsi.texdoc(x = x, file = file),
 			html = .summarytable.rrsi.html(x = x, file = file),
-			doc = .summarytable.rrsi.doc(x = x, file = file, autoformat = autoformat))
+			)
 }
 
-
+#' @export
 .getTable.rrsi <- function(x, type = 'summary', out = 'dev', file = '',...){
 	.summarytable.rrsi(x = x, type = type, out = out, file = file,...)
 }

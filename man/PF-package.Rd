@@ -8,7 +8,7 @@
 }
 \details{
   \tabular{ll}{ Package: \tab pf-package\cr Type: \tab
-  Package\cr Version: \tab 9.4\cr Date: \tab 2012-08-14\cr
+  Package\cr Version: \tab 9.5\cr Date: \tab 2013-08-29\cr
   License: \tab MIT\cr LazyLoad: \tab yes\cr LazyData: \tab
   yes\cr }
 }

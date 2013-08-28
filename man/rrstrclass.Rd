@@ -1,6 +1,5 @@
 \name{rrstr}
 \alias{rrstr}
-\alias{rrstr-class}
 \title{Data class rrstr}
 \description{
   Data class rrstr

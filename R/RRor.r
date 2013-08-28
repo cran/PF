@@ -17,7 +17,7 @@
 #' @param norm Estimate confidence interval using quantiles of Guassian rather than t distribution quantiles? 
 #' @param alpha Complement of the confidence level.
 #' @param rnd Number of digits for rounding. Affects display only, not estimates.
-#' @return A \code{\link{rror-class}} object with the following fields.
+#' @return A \code{\link{rror}} object with the following fields.
 #'  \item{estimate}{vector with point and interval estimate}
 #'  \item{estimator}{either \emph{PF} or \emph{RR}}
 #'	\item{mu}{matrix with rows giving probability estimates for each of the groups}
@@ -26,12 +26,13 @@
 #'  \item{norm}{logical indicating Gaussian or t interval}
 #'  \item{degf}{degrees of freedom}
 #' @export
+#' @references No references yet.
 #' @author David Siev \email{david.siev@@aphis.usda.gov}
 #' @note Level tested: Moderate. (Extensive in S+, not as much in R. They have different \code{glm()} functions.) \cr \cr
 #' Call to this function may be one of two formats: (1) specify \code{fit}  or (2) \code{beta.hat}, \code{var.beta.hat}, \code{degf}  \cr \cr
 #' \code{RRor(fit, degf = NULL, pf = TRUE, alpha = 0.05, which = c(1, 2), norm = TRUE, rnd = 3)} \cr \cr
 #' \code{RRor(beta.hat, var.beta.hat, degf,  pf = TRUE, alpha = 0.05, which = c(1, 2), norm = TRUE, rnd = 3)}
-#' @seealso \code{\link{rror-class}, \link{phiWt}, \link{tauWt}}. See the package vignette for more examples.
+#' @seealso \code{\link{rror}, \link{phiWt}, \link{tauWt}}. See the package vignette for more examples.
 #' 
 #' @examples
 #' bird.fit <- glm(cbind(y, n - y) ~ tx - 1, binomial, bird)
@@ -53,13 +54,11 @@
 ## RRor
 ##-----------------------------------------------
 
-RRor <- function(fit=NULL, beta.hat=NULL, var.beta.hat=NULL, degf=NULL, which = c(1, 2), pf=TRUE, norm = FALSE, alpha = 0.05, rnd=3){
+RRor <- function(fit=NULL, beta.hat=NULL, var.beta.hat=NULL, degf=NULL, which = c(1, 2), pf=T, norm = F, alpha = 0.05, rnd=3){
 	if(!is.null(fit)){
 		beta.hat <- coef(fit)
 		var.beta.hat <- summary(fit)$cov.sc
 		if(is.null(degf)) degf <- summary(fit)$df.resid
-	} else if(is.null(degf)){
-		stop('degf value required when using beta.hat and var.beta.hat arguments')
 	}
 	q <- c(0.5, alpha/2, 1 - alpha/2)
 	B <- beta.hat[which]

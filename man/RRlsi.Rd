@@ -36,9 +36,9 @@
   \item{full.track}{Verbose tracking of the iterations?}
 }
 \value{
-  An object of class \code{\link{rrsi-class}} with the
-  following fields: \cr \item{estimate}{matrix of point and
-  interval estimates - see details} \item{estimator}{either
+  An object of class \code{\link{rrsi}} with the following
+  fields: \cr \item{estimate}{matrix of point and interval
+  estimates - see details} \item{estimator}{either
   \code{"PF"} or \code{"RR"}} \item{y}{data vector}
   \item{rnd}{how many digits to round the display}
   \item{k}{likelihood ratio criterion}

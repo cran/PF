@@ -1,6 +1,5 @@
 \name{rrmp}
 \alias{rrmp}
-\alias{rrmp-class}
 \title{Data class rrmp}
 \description{
   Data class rrmp

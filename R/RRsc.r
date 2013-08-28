@@ -1,4 +1,5 @@
 #' @title RR score based asymptotic CI.
+#' @name RRsc
 #' @description Estimates confidence intervals for the risk ratio or prevented fraction based on the score statistic.
 #' @details Estimates are returned for three estimators based on the score statistic. The score method was introduced by Koopman (1984). Gart 
 #' and Nam's modification (1988) includes a skewness correction. The method of Miettinen and Nurminen (1985) is a version made slightly 
@@ -14,7 +15,7 @@
 #' @param iter.max Maximum number of iterations
 #' @param converge Convergence criterion
 #' @param rnd Number of digits for rounding. Affects display only, not estimates.
-#' @return A \code{\link{rrsc-class}} object with the following fields.
+#' @return A \code{\link{rrsc}} object with the following fields.
 #'  \item{estimate}{matrix of point and interval estimates - see details}
 #'  \item{estimator}{either \code{"PF"} or \code{"RR"}}
 #'  \item{y}{data vector}
@@ -27,7 +28,7 @@
 #' \cr Ralston ML, Jennrich RI, 1978. DUD, A Derivative-Free Algorithm for Nonlinear Least Squares. \emph{Technometrics} 20:7-14. 
 #' @author David Siev \email{david.siev@@aphis.usda.gov}
 #' @note Level tested: High.
-#' @seealso \code{\link{rrsc-class}}
+#' @seealso \code{\link{rrsc}}
 #' 
 #' @examples
 #' RRsc(c(4, 24, 12, 28))

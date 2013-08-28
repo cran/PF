@@ -1,9 +1,10 @@
-# Print values for PF data objects.
-# 
-# @param x object of class rr1, rror, rrsi, rrmp, rrstr, rrsc
-# @param ... other arguments not used by this method
-# @rdname print.PF
-# @method print rr1
+#' Print values for PF data obhects.
+#' 
+#' @param x object of class rr1, rror, rrsi, rrmp, rrstr, rrsc
+#' @param ... other arguments not used by this method
+#' @rdname print.PF
+#' @export
+#' @method print rr1
 print.rr1 <- function(x,...){
 	num.dig <- options()$digits
     options(digits = x$rnd)
@@ -20,9 +21,9 @@ print.rr1 <- function(x,...){
 #' @nord
 setMethod('show', 'rr1', function(object){print(object)})
 
-# @rdname print.PF
-# @method print rror
-# @export
+#' @rdname print.PF
+#' @method print rror
+#' @export
 print.rror <- function(x,...){
     num.dig <- options()$digits
     options(digits = x$rnd)
@@ -47,9 +48,9 @@ setMethod('show', 'rror', function(object){print(object)})
 
 
 
-# @rdname print.PF
-# @method print rrsi
-# @export
+#' @rdname print.PF
+#' @method print rrsi
+#' @export
 print.rrsi <- function(x,...){
 
 	num.dig <- options()$digits
@@ -70,9 +71,9 @@ print.rrsi <- function(x,...){
 #' @nord
 setMethod('show', 'rrsi', function(object){print(object)})
 
-# @rdname print.PF
-# @method print rrmp
-#@export
+#' @rdname print.PF
+#' @method print rrmp
+#' @export
 print.rrmp <- function(x,...){
 	num.dig <- options()$digits
     options(digits = x$rnd)
@@ -90,9 +91,9 @@ print.rrmp <- function(x,...){
 setMethod('show', 'rrmp', function(object){print(object)})
 
 
-# @rdname print.PF
-# @method print rrsc
-# @export
+#' @rdname print.PF
+#' @method print rrsc
+#' @export
 print.rrsc <- function(x,...){
     num.dig <- options()$digits
     options(digits = x$rnd)
@@ -111,9 +112,9 @@ setMethod('show', 'rrsc', function(object){print(object)})
 
 
 
-# @rdname print.PF
-# @method print rrstr
-# @export
+#' @rdname print.PF
+#' @method print rrstr
+#' @export
 print.rrstr <- function(x,...){
      num.dig <- options()$digits
     options(digits = x$rnd)

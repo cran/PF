@@ -21,7 +21,7 @@
 #' @param start Optional starting value.
 #' @param track Verbose tracking of the iterations? 
 #' @param full.track Verbose tracking of the iterations? 
-#' @return An object of class \code{\link{rrsi-class}} with the following fields: \cr
+#' @return An object of class \code{\link{rrsi}} with the following fields: \cr
 #'  \item{estimate}{matrix of point and interval estimates - see details}
 #'  \item{estimator}{either \code{"PF"} or \code{"RR"}}
 #'  \item{y}{data vector}

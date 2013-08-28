@@ -1,6 +1,5 @@
 \name{rrsc}
 \alias{rrsc}
-\alias{rrsc-class}
 \title{Data class rrsc}
 \description{
   Data class rrsc

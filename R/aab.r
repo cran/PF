@@ -17,6 +17,7 @@
 # }
 # @seealso \code{\link{RRmh}, \link{RRstr}}
 .matricize <- function(formula, data, compare = compare){
+
 	# 1/18/2012 - added error checking for compare argument. mcv
 	# goal: avoid the two following scenarios
 	#     if length(compare) < 2: cannot check levels(x) later
@@ -43,8 +44,14 @@
 		}
 	}
 	
-    assign('cluster', function(x){return(x)}, envir = .GlobalEnv)
-    A <- model.frame(formula = formula, data = data)
+    cluster <- function(x){return(x)}
+	environment(cluster) <- parent.env(environment())
+print("ok")
+	Terms <- terms(formula, data = data)
+	environment(Terms) <- environment()
+	A <- model.frame(formula = Terms, data = data)
+
+print("end")	
 	A <- data.frame(A[, 1], A[, 2:3]) # for easier subscripting
     A <- A[order(A[, 4], A[, 3]), ]
     y <- A[, 1]

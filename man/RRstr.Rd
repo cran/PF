@@ -44,9 +44,9 @@
   \item{divider}{internal control parameter for algorithm}
 }
 \value{
-  A \code{\link{rrstr-class}} object with the following
-  fields: \item{estimate}{matrix of point and interval
-  estimates - starting value, MLE, and skewness corrected}
+  A \code{\link{rrstr}} object with the following fields:
+  \item{estimate}{matrix of point and interval estimates -
+  starting value, MLE, and skewness corrected}
   \item{hom}{list of homogeneity statistic, p-value, and
   degrees of freedom} \item{estimator}{either \code{"PF"}
   or \code{"RR"}} \item{y}{Y matrix of the data}
@@ -112,6 +112,6 @@ RRstr(Y = table6, pf = FALSE)
   Nonlinear Least Squares. \emph{Technometrics} 20:7-14.
 }
 \seealso{
-  \code{\link{rrstr-class}}
+  \code{\link{rrstr}}
 }
 

@@ -1,6 +1,5 @@
 \name{rr1}
 \alias{rr1}
-\alias{rr1-class}
 \title{Data class rr1}
 \description{
   Data class rr1

@@ -34,12 +34,12 @@
   (restricts range of nuisance parameter evaluation)}
 }
 \value{
-  An object of class \code{\link{rr1-class}} with the
-  following fields: \cr \item{estimate}{vector with point
-  and interval estimate} \item{estimator}{either
-  \code{"PF"} or \code{"RR"}} \item{y}{data vector}
-  \item{rnd}{how many digits to round the display}
-  \item{alpha}{complement of confidence level}
+  An object of class \code{\link{rr1}} with the following
+  fields: \cr \item{estimate}{vector with point and
+  interval estimate} \item{estimator}{either \code{"PF"} or
+  \code{"RR"}} \item{y}{data vector} \item{rnd}{how many
+  digits to round the display} \item{alpha}{complement of
+  confidence level}
 }
 \description{
   Estimates confidence interval for the risk ratio or
@@ -61,13 +61,13 @@
   Level tested: Moderate.
 }
 \examples{
-RRotsst(c(4, 24, 12, 28), rnd = 3)
+\dontrun{RRotsst(c(4, 24, 12, 28), rnd = 3)
 
 # PF
 # 95\% interval estimates
 
  #    PF     LL     UL
-# 0.6111 0.0148 0.8519
+# 0.6111 0.0148 0.8519 }
 }
 \author{
   David Siev \email{david.siev@aphis.usda.gov}
@@ -83,6 +83,6 @@ RRotsst(c(4, 24, 12, 28), rnd = 3)
   Statistical Association} 89:214-220.
 }
 \seealso{
-  \code{\link{RRtosst}, \link{rr1-class}}.
+  \code{\link{RRtosst}, \link{rr1}}.
 }
 

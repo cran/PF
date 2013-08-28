@@ -1,4 +1,4 @@
-
+#' @export
 .summarytable.rrstr.tex <- function(x, file = '', append = F,...){
 	cat('%\\usepackage{float, hyperref}\n', file = file, append = append)
 	print(xtable(t(as.data.frame(x@hom)), digits = x@rnd,  caption ='Test of homogenity across clusters' ), 
@@ -7,7 +7,7 @@
 		'\\% interval estimates', sep = ''), digits = x@rnd), table.placement ='H', file = file, append = T)
 }
 
-
+#' @export
 .summarytable.rrstr.texdoc <- function(x, file = '',...){
 	cat('\\documentclass[12pt]{article}\n \\usepackage{float, hyperref}\n \\begin{document}\n', file = file)
 	.summarytable.rrstr.tex(x = x, file = file, append = T)
@@ -15,7 +15,7 @@
 }
 
 
-
+#' @export
 .summarytable.rrstr.html <- function(x, file = '',...){
 
 	cat('<html>\n<head>\n<link rel="stylesheet" type="text/css" href="W:\\Biometrics\\Section\\Software\\style.css">\n</head>\n<body>\n', file = file)
@@ -31,25 +31,7 @@
 }
 
 
-.summarytable.rrstr.doc <- function(x, file = '', autoformat = 1,...){
-	if(!'R2wd' %in% installed.packages()){	
-		stop('package R2wd required for doc output')
-	} else {
-		wdGet()
-		temp <- format(round(t(as.data.frame(x@hom)), digits = x@rnd), nsmall = x@rnd)
-		colnames(temp) <- 'x'
-		wdTable(temp, caption ='Test of homogenity across clusters', autoformat = autoformat)
-			
-		wdTable(round(x@estimate, x@rnd), caption = paste(x@estimator, ' ', round(100*(1-x@alpha),x@rnd), 
-			'% interval estimates', sep = ''), autoformat = autoformat)
-			
-		if(file !=''){
-			wdSave(file)
-		}
-		wdQuit()
-		}
-}
-
+#' @export
 .summarytable.rrstr <- function(x, out = 'dev', file = '',...){
 	args <- list(...)
 	if(is.null(args$autoformat)){
@@ -62,9 +44,10 @@
 			tex = .summarytable.rrstr.tex(x = x, file = file),
 			texdoc = .summarytable.rrstr.texdoc(x = x, file = file),
 			html = .summarytable.rrstr.html(x = x, file = file),
-			doc = .summarytable.rrstr.doc(x = x, file = file, autoformat = autoformat))
+		)
 }
 
+#' @export
 .getTable.rrstr <- function(x, type = 'summary', out = 'dev', file = '',...){
 	.summarytable.rrstr(x = x, type = type, out = out, file = file,...)
 }

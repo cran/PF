@@ -15,7 +15,7 @@
 #' @param stepstart starting interval for step search
 #' @param nuisance.points number of points over which to evaluate nuisance parameter
 #' @param gamma parameter for Berger-Boos correction (restricts range of nuisance parameter evaluation)
-#' @return A \code{\link{rr1-class}} object with the following fields.
+#' @return A \code{\link{rr1}} object with the following fields.
 #'  \item{estimate}{vector with point and interval estimate}
 #'  \item{estimator}{either \code{"PF"} or \code{"RR"}}
 #'  \item{y}{data vector}
@@ -27,22 +27,22 @@
 #' \cr Berger RL, Boos DD, 1994. P values maximized over a confidence set for the nuisance parameter. \emph{Journal of the American Statistical Association} 89:214-220.
 #' @author David Siev \email{david.siev@@aphis.usda.gov}
 #' @note Level tested: Moderate.
-#' @seealso \code{\link{RRotsst}, \link{rr1-class}}
+#' @seealso \code{\link{RRotsst}, \link{rr1}}
 #' 
 #' @examples
-#' RRtosst(c(4, 24, 12, 28))
+#' \dontrun{RRtosst(c(4, 24, 12, 28))
 #' 
 #' # PF 
 #' # 95% interval estimates
 #' 
 #' #    PF    LL    UL 
-#' # 0.611 0.012 0.902 
+#' # 0.611 0.012 0.902 }
  
 ##--------------------------------------------------------------------
 ## RRtosst function
 ##--------------------------------------------------------------------
 
-RRtosst <- function(y, alpha = 0.05, pf = TRUE, stepstart=.1, iter.max = 36, converge = 1e-6, rnd = 3, trace.it = FALSE, nuisance.points=120, gamma=1e-6){
+RRtosst <- function(y, alpha = 0.05, pf = TRUE, stepstart=.1, iter.max = 36, converge = 1e-6, rnd = 3, trace.it=FALSE, nuisance.points=120, gamma=1e-6){
 
 # Estimates exact confidence interval by the TOSST method
 # Score statistic used to select tail area tables
@@ -136,8 +136,8 @@ RRtosst <- function(y, alpha = 0.05, pf = TRUE, stepstart=.1, iter.max = 36, con
 		q.set <- Y[scst.y>=scst.y[observed],]
 		q.set$n1y1 <- n1-q.set$y1
 		q.set$n2y2 <- n2-q.set$y2
-		if(gamma > 0) pn <- seq(max(L1,L2/low),min(U1,U2/low),length=nuisance.points) # Berger-Boos method
-			else pn <- seq(0,min(1/low,1),length=nuisance.points) # simple method 
+		if(gamma > 0) pn <- seq(max(L1,L2/low),min(U1,U2/low),length=nuisance.points) # Berger-Boos method 17.164
+			else pn <- seq(0,min(1/low,1),length=nuisance.points) # simple method 17.138
 		if(sum(pn>1)>0){
 				cat('\nIteration', iter, 'nuisance parameter outside parameter space\n')
 				next
@@ -181,7 +181,7 @@ RRtosst <- function(y, alpha = 0.05, pf = TRUE, stepstart=.1, iter.max = 36, con
 		p.set$n1y1 <- n1-p.set$y1
 		p.set$n2y2 <- n2-p.set$y2
 		if(gamma > 0) pn <- seq(max(L1,L2/high),min(U1,U2/high),length=nuisance.points) # Berger-Boos method 17.164
-			else pn <- seq(0,min(1/high,1),length=nuisance.points) # 
+			else pn <- seq(0,min(1/high,1),length=nuisance.points) # simple method 17.138
 			if(sum(pn>1)>0){
 				cat('\nIteration', iter, 'nuisance parameter outside parameter space\n')
 				next
@@ -223,6 +223,7 @@ RRtosst <- function(y, alpha = 0.05, pf = TRUE, stepstart=.1, iter.max = 36, con
 #' 
 #' @usage .rr.score.asymp(y)
 #' @param y data
+#' @export
 #' @examples
 #' # none
 

@@ -40,12 +40,12 @@
   only, not estimates.}
 }
 \value{
-  A \code{\link{rrmp-class}} object with the following
-  fields: \item{estimate}{vector of point and interval
-  estimates - see details} \item{estimator}{either
-  \code{"PF"} or \code{"RR"}} \item{compare}{text vector,
-  same as input} \item{alpha}{complement of confidence
-  level} \item{rnd}{how many digits to round the display}
+  A \code{\link{rrmp}} object with the following fields:
+  \item{estimate}{vector of point and interval estimates -
+  see details} \item{estimator}{either \code{"PF"} or
+  \code{"RR"}} \item{compare}{text vector, same as input}
+  \item{alpha}{complement of confidence level}
+  \item{rnd}{how many digits to round the display}
   \item{xtable}{data arrayed in 2x2 matrix}
   \item{freqvec}{data arrayed a 4-vector}
   \item{multvec}{data frame showing the multinomial

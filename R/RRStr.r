@@ -13,7 +13,7 @@
 #' @param rnd Number of digits for rounding. Affects display only, not estimates.
 #' @param multiplier internal control parameter for algorithm
 #' @param divider internal control parameter for algorithm
-#' @return A \code{\link{rrstr-class}} object with the following fields:
+#' @return A \code{\link{rrstr}} object with the following fields:
 #'  \item{estimate}{matrix of point and interval estimates - starting value, MLE, and skewness corrected}
 #'  \item{hom}{list of homogeneity statistic, p-value, and degrees of freedom}
 #'  \item{estimator}{either \code{"PF"} or \code{"RR"}}
@@ -31,7 +31,7 @@
 #' Call to this function may be one of two formats: (1) specify \code{data} and \code{formula} or (2) as a matrix \code{Y} \cr \cr
 #' \code{RRstr(formula, data, compare = c('b','a'), pf = TRUE, alpha = 0.05, trace.it = FALSE, iter.max = 24, converge = 1e-6, rnd = 3, multiplier = 0.7, divider = 1.1)} \cr \cr
 #' \code{RRstr(Y, compare = c('b','a'), pf = TRUE, alpha = 0.05, trace.it = FALSE, iter.max = 24, converge = 1e-6, rnd = 3, multiplier = 0.7, divider = 1.1)}
-#' @seealso \code{\link{rrstr-class}}
+#' @seealso \code{\link{rrstr}}
 #' @examples
 #' ## Table 1 from Gart (1985)
 #' ##  as data frame

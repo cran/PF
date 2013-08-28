@@ -11,7 +11,7 @@
 #' @param alpha Complement of the confidence level.
 #' @param pf Estimate \emph{IDR}, or its complement \emph{PF}? 
 #' @param rnd Number of digits for rounding. Affects display only, not estimates.
-#' @return A \code{\link{rr1-class}} object with the following elements.
+#' @return A \code{\link{rr1}} object with the following elements.
 #'  \item{estimate}{vector with point and interval estimate}
 #'  \item{estimator}{either \emph{PF} or \emph{IDR}}
 #'  \item{y}{data vector}

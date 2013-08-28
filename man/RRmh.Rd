@@ -35,12 +35,12 @@
   only, not estimates.}
 }
 \value{
-  An object of class \code{\link{rr1-class}} with the
-  following fields.  \item{estimate}{vector of point and
-  interval estimates: point estimate, lower confidence
-  limit, upper confidence limit} \item{estimator}{either
-  \code{"PF"} or \code{"RR"}} \item{y}{y matrix of the
-  data} \item{compare}{groups compared} \item{rnd}{how many
+  An object of class \code{\link{rr1}} with the following
+  fields.  \item{estimate}{vector of point and interval
+  estimates: point estimate, lower confidence limit, upper
+  confidence limit} \item{estimator}{either \code{"PF"} or
+  \code{"RR"}} \item{y}{y matrix of the data}
+  \item{compare}{groups compared} \item{rnd}{how many
   digits to round the display} \item{alpha}{complement of
   confidence level}
 }
@@ -106,6 +106,6 @@ RRmh(Y = table6, pf = FALSE)
   York), Sec. 4.3.1.
 }
 \seealso{
-  \code{\link{rr1-class}}
+  \code{\link{rr1}}
 }
 
